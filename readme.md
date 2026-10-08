@@ -1,13 +1,13 @@
 # 👋 Hi, I'm Omer Habib
 
-**Senior Android Engineer**  
+**Senior Mobile Engineer**  
 🚀 Kotlin | Jetpack Compose | MVVM & MVI | Modular Apps | CI/CD & Scalable Architecture | edTech & finTech
 
 ---
 
 ## 👨‍💻 About Me
 
-I'm a **Senior Android Developer** with over 8 years of experience building scalable, performant, and user-centric apps in **EdTech**, **FinTech**, and survey platforms. I specialize in **Kotlin**, **Jetpack Compose**, and **Clean Architecture**, with a strong focus on **modularization**, **CI/CD**, and **clean code principles**.
+I'm a **Senior Mobile Engineer** with 10 years of experience building scalable, performant, and user-centric apps in **EdTech**, **FinTech**, and survey platforms. I specialize in **Kotlin**, **Jetpack Compose**, and **Clean Architecture**, with a strong focus on **modularization**, **CI/CD**, and **clean code principles**.
 
 I've contributed to global-impact apps and platforms used by **millions of users**, collaborating with international teams and companies such as **edX**, **Open edX**, **2U.com**, and the **World Bank**.
 
@@ -28,6 +28,9 @@ I've contributed to global-impact apps and platforms used by **millions of users
 
 ### 💻 Languages  
 Kotlin • Java • Swift • Python • XML • SQL • JSON  
+
+### Cross-Platform, Hybrid & Backend
+React Native • Angular • Ionic • WebView • JavaScript/TypeScript • PHP REST APIs • Moodle integration • Node.js
 
 ### 🧱 Architecture & Patterns  
 MVVM • MVI • Clean Architecture • Modularization • Repository Pattern • SOLID Principles  
