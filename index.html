@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js" >
     <head>
+        <!-- Google Analytics 4 -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-14NEJEX6SZ"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-14NEJEX6SZ');
+        </script>
         
         <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -573,6 +581,75 @@
                                         </div> </footer> </div> <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
         
+        <script>
+        (function () {
+            'use strict';
+
+            function track(name, parameters) {
+                if (typeof window.gtag === 'function') {
+                    window.gtag('event', name, parameters);
+                }
+            }
+
+            // Send fixed labels instead of email addresses, phone numbers or query strings.
+            document.addEventListener('click', function (event) {
+                var link = event.target.closest && event.target.closest('a[href]');
+                if (!link) return;
+                var href = link.getAttribute('href') || '';
+                var location = link.closest('footer') ? 'footer' :
+                    link.closest('header') ? 'header' : 'content';
+
+                if (/^mailto:/i.test(href)) {
+                    track('contact_click', {contact_method: 'email', link_location: location});
+                } else if (/^tel:/i.test(href)) {
+                    track('contact_click', {contact_method: 'phone', link_location: location});
+                } else if (/assets\/Omer_Habib_Resume\.pdf(?:[?#]|$)/i.test(href)) {
+                    // Custom event is distinct from enhanced measurement's file_download.
+                    track('cv_click', {link_location: location});
+                } else if (link.matches('.entry__link.glightbox')) {
+                    var title = (link.getAttribute('data-glightbox') || '')
+                        .match(/title:\s*([^;]+)/);
+                    track('project_open', {project_name: title ? title[1].trim() : 'portfolio_project'});
+                } else if (/^https?:/i.test(href)) {
+                    var url;
+                    try { url = new URL(href, window.location.href); } catch (error) { return; }
+                    if (/(^|\.)linkedin\.com$/i.test(url.hostname)) {
+                        track('social_click', {platform: 'linkedin', link_location: location});
+                    } else if (/(^|\.)github\.com$/i.test(url.hostname)) {
+                        track('social_click', {platform: 'github', link_location: location});
+                    }
+                } else if (/^#(?:intro|about|works|footer)$/.test(href)) {
+                    track('navigation_click', {section_name: href.slice(1), link_location: location});
+                }
+            });
+
+            // Count each section once, after it stays in view for at least one second.
+            if ('IntersectionObserver' in window) {
+                var seen = new Set();
+                var timers = new Map();
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        var section = entry.target;
+                        if (seen.has(section.id)) return;
+                        if (entry.isIntersecting && !timers.has(section.id)) {
+                            timers.set(section.id, window.setTimeout(function () {
+                                timers.delete(section.id);
+                                if (document.visibilityState !== 'visible') return;
+                                seen.add(section.id);
+                                track('section_view', {section_name: section.id});
+                                observer.unobserve(section);
+                            }, 1000));
+                        } else if (!entry.isIntersecting && timers.has(section.id)) {
+                            window.clearTimeout(timers.get(section.id));
+                            timers.delete(section.id);
+                        }
+                    });
+                }, {threshold: 0.1});
+                document.querySelectorAll('#intro, #about, #works, #footer')
+                    .forEach(function (section) { observer.observe(section); });
+            }
+        }());
+        </script>
     </body>
 </html>
 
