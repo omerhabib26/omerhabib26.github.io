@@ -584,6 +584,20 @@
       <div class="ai-feedback"><strong>Debugging loop:</strong> client state events + server request ID &#8594; correlated timeline &#8594; regression test.</div>
       <figcaption>A personal demo with local telemetry and in-memory server storage. Durable storage and production authentication would be needed for a production service.</figcaption>
     </figure>
+
+    <figure class="ai-diagram">
+      <h3>03 / Debug with analytics &amp; telemetry</h3>
+      <p>Use evidence from the client and API to understand where a submission failed, then verify the fix.</p>
+      <div class="ai-system" role="group" aria-label="Client events and server logs feed a correlated timeline, then a reproduction and bounded fix">
+        <div class="ai-node"><h4>Collect the signals</h4><p>Client state transitions and failure events, alongside server logs and request IDs.</p><div class="ai-storage">Capture the outcome and context.<br>Keep amounts, tokens, and personal details out of events.</div></div>
+        <span class="ai-arrow" aria-hidden="true">&#8594;</span>
+        <div class="ai-node"><h4>Correlate the timeline</h4><p>Connect client behavior to the server response. Check what happened before the failure.</p><div class="ai-storage">Example investigation<br>Did the server accept the claim while the response was lost?</div></div>
+        <span class="ai-arrow" aria-hidden="true">&#8594;</span>
+        <div class="ai-node"><h4>Reproduce &amp; fix</h4><p>Test the hypothesis, make a bounded change, and review the affected contracts.</p><div class="ai-storage">Confirm recovery<br>Retry the original operation without creating a duplicate.</div></div>
+      </div>
+      <div class="ai-feedback"><strong>Close the loop:</strong> fix &#8594; API + UI regression checks &#8594; CI evidence &#8594; engineer review.</div>
+      <figcaption>The demo uses structured local events. The same investigation approach can be mapped to Crashlytics, Firebase Analytics, Segment, or another approved production monitoring tool.</figcaption>
+    </figure>
     <div class="ai-skills" aria-label="Six focused engineering skills">
       <article class="ai-skill"><h4>Plan the feature</h4><p>Turn requirements into acceptance criteria and a practical task plan.</p></article>
       <article class="ai-skill"><h4>Design the contracts</h4><p>Define state ownership, API behavior, caching, and safe retries.</p></article>
