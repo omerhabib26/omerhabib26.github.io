@@ -217,6 +217,23 @@
 .project-caption {padding:16px 4px 24px;}
 .project-caption h3 {font-size:21px;margin:0 0 8px;}
 .project-caption p {font-size:14px;line-height:1.6;margin:0;color:#586a61;}
+
+/* AI emphasis and on-page CV */
+.hero-ai-badge {display:inline-block;background:#d8eddf;color:#174b32;border:1px solid #9ac7a9;border-radius:6px;padding:5px 9px;}
+.s-header__menu-links .nav-ai {color:#a3efc4;font-weight:700;}
+.hero-ai-cta {background:#173d2d;color:#fff;}
+.hero-project-link {display:block;font-size:14px;font-weight:600;margin-top:8px;color:#245b3f;}
+.cv-section {padding:80px 0;background:#f5f7f2;scroll-margin-top:100px;}
+.cv-section h2 {font-size:clamp(36px,4.7vw,58px);margin:0 0 20px;color:#173d2d;}
+.cv-section .delivery-kicker {color:#267258;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;}
+.cv-section p {font-size:17px;line-height:1.6;max-width:800px;}
+.cv-actions {display:flex;gap:16px;flex-wrap:wrap;}
+.cv-actions a {padding:12px 18px;border:1px solid #267258;border-radius:6px;color:#173d2d;font-size:15px;font-weight:600;}
+.cv-actions a:last-child {background:#173d2d;color:white;}
+.cv-details iframe {display:block;width:100%;height:780px;height:min(80vh,900px);border:0;background:white;}
+.cv-details .cv-fallback {padding:14px 20px;font-size:14px;margin:0;}
+@media(max-width:600px){.cv-section{padding:60px 0;}.cv-details iframe{height:65vh;min-height:400px;}.hero-ai-badge{font-size:13px;}.s-intro__content-btns .btn{padding-left:14px;padding-right:14px;}}
+.ai-daily {margin:44px 0;}.ai-showcase .ai-daily > h3 {font-size:30px;}.ai-daily-lead {font-size:17px;line-height:1.65;color:#b7cace;max-width:850px;}
 </style>
                         
                         
@@ -258,13 +275,14 @@
                         <a class="s-header__menu-toggle" href="#0"><span>Menu</span></a>
                     </div> <nav class="s-header__nav">
                         <ul class="s-header__menu-links">
-                            <li class="current"><a class="smoothscroll" href="#intro">Intro</a></li>
-                            <li><a class="smoothscroll" href="#works">Works</a></li>
-                            <li><a class="smoothscroll" href="#about">About</a></li>
-                            <li><a class="smoothscroll" href="#feature-delivery">Process</a></li>
-                            <li><a class="smoothscroll" href="#ai-engineering">AI Project</a></li>
-                            <li><a class="smoothscroll" href="#footer">Contact</a></li>
-                        </ul> </nav> </div> </header> <section id="intro" class="s-intro target-section">
+<li class="current"><a class="smoothscroll" href="#intro">Intro</a></li>
+<li><a class="smoothscroll nav-ai" href="#ai-engineering">AI Project</a></li>
+<li><a class="smoothscroll" href="#works">Works</a></li>
+<li><a class="smoothscroll" href="#about">About</a></li>
+<li><a class="smoothscroll" href="#feature-delivery">Process</a></li>
+<li><a class="smoothscroll" href="#cv-preview">CV</a></li>
+<li><a class="smoothscroll" href="#footer">Contact</a></li>
+</ul> </nav> </div> </header> <section id="intro" class="s-intro target-section">
                             
                             <div class="row s-intro__content width-sixteen-col">
                                 <div class="column lg-12 s-intro__content-inner grid-block grid-16">
@@ -273,16 +291,17 @@
                                         
                                         <div class="s-intro__content-pretitle text-pretitle">Moin Omer Habib</div>
                                         <h1 class="s-intro__content-title">Senior Mobile<br>Engineer.</h1>
-<p class="hero-position">AI-Assisted Engineering · 10 Years</p>
-<p class="hero-value">I build reliable Android, cross-platform, and hybrid apps—with practical backend expertise.</p>
+<p class="hero-position"><span class="hero-ai-badge">AI-Assisted Engineering</span> · 10 Years</p>
+<p class="hero-value">I build reliable mobile products with AI-assisted planning, implementation, testing, and telemetry-driven debugging.</p>
 <p class="hero-availability">Based in Pakistan · Open to European remote roles and relocation with sponsorship.</p>
 <a class="hero-contact" href="mailto:omer.habib26@gmail.com">Let's talk &#8594;</a>
                                         
                                         
                                         
                                         <div class="s-intro__content-btns">
-                                            <a class="btn" href="assets/Omer_Habib_Resume.pdf">Download CV</a>
-                                            <a class="smoothscroll btn btn--stroke" href="#works">View Projects</a>
+                                            <a class="smoothscroll btn hero-ai-cta" href="#ai-engineering">Explore AI Project</a>
+                                            <a class="smoothscroll btn btn--stroke" href="#cv-preview">Preview CV</a>
+<a class="smoothscroll hero-project-link" href="#works">View mobile projects &#8594;</a>
                                         </div> </div> </div> </div> <ul class="s-intro__social social-list">
                                             <li>
                                                 <a href="https://www.github.com/omerhabib26" target="_blank">
@@ -314,7 +333,83 @@
 <div><strong>10 years</strong><span>Mobile engineering experience</span></div>
 <div><strong>Millions</strong><span>Users of products I’ve contributed to</span></div>
 <div><strong>99.2%+</strong><span>Crash-free sessions on edX Android</span></div>
-</div></section><section id="works" class="s-works target-section">
+</div></section><section id="ai-engineering" class="ai-showcase target-section" aria-labelledby="ai-project-title">
+  <div class="ai-wrap">
+    <p class="ai-eyebrow">Featured project · AI-assisted mobile engineering</p>
+    <h2 id="ai-project-title">AI-Assisted Mobile<br>Engineering Playbook.</h2>
+    <p class="ai-lead">My AI-Assisted Mobile Engineering Playbook brings reusable agent skills, a Kotlin/Compose client, and a Node.js expense-claims demo into one practical workflow—from a feature brief to reviewed, tested changes.</p>
+    <div class="ai-tags" aria-label="Project technologies">
+      <span>7 reusable agent skills</span><span>Kotlin + Compose</span><span>Node.js API</span><span>UI &amp; API tests</span><span>GitHub Actions</span>
+    </div>
+    <div class="ai-actions">
+      <a href="https://github.com/omerhabib26/omerhabib" target="_blank" rel="noopener noreferrer">Explore the project &#8599;</a>
+      <a href="https://github.com/omerhabib26/omerhabib/blob/main/docs/walkthrough.md" target="_blank" rel="noopener noreferrer">Read the engineering walkthrough &#8599;</a>
+    </div>
+<div class="ai-overview"><article><h3>Plan & design</h3><p>Feature scope, state ownership, and API contracts.</p></article><article><h3>AI-assisted build</h3><p>Focused tasks with engineer review.</p></article><article><h3>Verify & deliver</h3><p>UI/API tests, CI evidence, PRs, and artifacts.</p></article><article><h3>Debug & improve</h3><p>Events + request IDs → reproduce → fix → regression checks.</p></article></div><figure class="ai-diagram">
+      <h3>01 / From idea to reviewed delivery</h3>
+      <p>AI supports the work. Acceptance criteria, engineer review, and automated checks guide what gets accepted.</p>
+      <ol class="ai-flow">
+        <li><span class="ai-step">01 / DEFINE</span><h4>Feature brief</h4><p>Scope, acceptance criteria, offline behavior, and failure cases.</p></li>
+        <li><span class="ai-step">02 / DESIGN</span><h4>State &amp; API contracts</h4><p>Ownership, response types, persistence, and retry guarantees.</p></li>
+        <li><span class="ai-step">03 / IMPLEMENT</span><h4>AI-assisted changes</h4><p>Bounded implementation tasks grounded in the agreed contracts.</p></li>
+        <li><span class="ai-step">04 / REVIEW</span><h4>Engineer review &amp; PR</h4><p>Check correctness, document evidence, and use Conventional Commits.</p></li>
+        <li><span class="ai-step">05 / VERIFY</span><h4>GitHub Actions</h4><p>API and browser UI checks, plus Android build, lint, and unit tests.</p></li>
+        <li><span class="ai-step">06 / PREPARE</span><h4>Artifacts &amp; release plan</h4><p>Package reviewed changes and define recovery before release.</p></li>
+      </ol>
+      <div class="ai-feedback"><strong>When checks fail:</strong> logs + request IDs &#8594; reproduce &#8594; fix &#8594; review and verify again.</div>
+      <figcaption>The repository includes CI and artifact workflows. Production deployment and Google Play publishing remain separate steps.</figcaption>
+    </figure>
+<div class="ai-daily" aria-labelledby="ai-daily-title">
+<h3 id="ai-daily-title">How AI makes everyday work easier.</h3>
+<p class="ai-daily-lead">Less time starting from a blank page. More time for product decisions, architecture, and verified delivery. These are practical ways AI can support an engineer’s day.</p>
+<div class="ai-overview">
+<article><span class="ai-step">PLAN WITH CLARITY</span><h3>From request to action</h3><p>Turn client notes into a feature brief, clarify missing requirements, surface edge cases, and prepare a task plan for team discussion.</p></article>
+<article><span class="ai-step">BUILD WITH SUPPORT</span><h3>Code, tests &amp; review</h3><p>Draft focused implementation options and Given–When–Then tests, explore unfamiliar code, and use review prompts to catch gaps before a PR.</p></article>
+<article><span class="ai-step">DEBUG WITH EVIDENCE</span><h3>Find the next useful check</h3><p>Organise sanitised logs and request IDs into a timeline, propose hypotheses, and turn a reproduced failure into regression coverage.</p></article>
+<article><span class="ai-step">SIMPLIFY THE ROUTINE</span><h3>Communicate &amp; learn</h3><p>Prepare PR descriptions, release notes, meeting summaries, and clear technical explanations. Use structured practice to learn a new concept.</p></article>
+</div>
+<div class="ai-feedback"><strong>My working principle:</strong> AI helps draft and investigate; I validate behavior, review code, and own the final decisions. Sensitive client data stays out of prompts.</div>
+</div>
+<details class="portfolio-details ai-more"><summary>Explore the system architecture, debugging &amp; agent skills</summary>    
+    <figure class="ai-diagram">
+      <h3>02 / A claim that can survive a retry</h3>
+      <p>The expense-claims demo explores offline recovery and a lost server response without creating a second claim.</p>
+      <div class="ai-system" role="group" aria-label="Client interface connects to state and persistent pending claim, then to the claims API and idempotency store">
+        <div class="ai-node"><h4>Client interface</h4><p>Kotlin / Jetpack Compose<br>or mobile web client</p><div class="ai-storage">Shows loading, success, and recoverable failure states.</div></div>
+        <span class="ai-arrow" aria-hidden="true">&#8594;</span>
+        <div class="ai-node"><h4>State &amp; pending claim</h4><p>Save the payload and operation key before sending.</p><div class="ai-storage">Persistent storage<br>Android: SharedPreferences<br>Web: localStorage</div></div>
+        <span class="ai-arrow" aria-hidden="true">&#8594;</span>
+        <div class="ai-node"><h4>Node.js claims API</h4><p>Retry with the same key and payload to retrieve the original result.</p><div class="ai-storage">Process-local idempotency store<br>Replay returns the same claim ID.</div></div>
+      </div>
+      <div class="ai-feedback"><strong>Debugging loop:</strong> client state events + server request ID &#8594; correlated timeline &#8594; regression test.</div>
+      <figcaption>A personal demo with local telemetry and in-memory server storage. Durable storage and production authentication would be needed for a production service.</figcaption>
+    </figure>
+
+    <figure class="ai-diagram">
+      <h3>03 / Debug with analytics &amp; telemetry</h3>
+      <p>Use evidence from the client and API to understand where a submission failed, then verify the fix.</p>
+      <div class="ai-system" role="group" aria-label="Client events and server logs feed a correlated timeline, then a reproduction and bounded fix">
+        <div class="ai-node"><h4>Collect the signals</h4><p>Client state transitions and failure events, alongside server logs and request IDs.</p><div class="ai-storage">Capture the outcome and context.<br>Keep amounts, tokens, and personal details out of events.</div></div>
+        <span class="ai-arrow" aria-hidden="true">&#8594;</span>
+        <div class="ai-node"><h4>Correlate the timeline</h4><p>Connect client behavior to the server response. Check what happened before the failure.</p><div class="ai-storage">Example investigation<br>Did the server accept the claim while the response was lost?</div></div>
+        <span class="ai-arrow" aria-hidden="true">&#8594;</span>
+        <div class="ai-node"><h4>Reproduce &amp; fix</h4><p>Test the hypothesis, make a bounded change, and review the affected contracts.</p><div class="ai-storage">Confirm recovery<br>Retry the original operation without creating a duplicate.</div></div>
+      </div>
+      <div class="ai-feedback"><strong>Close the loop:</strong> fix &#8594; API + UI regression checks &#8594; CI evidence &#8594; engineer review.</div>
+      <figcaption>The demo uses structured local events. The same investigation approach can be mapped to Crashlytics, Firebase Analytics, Segment, or another approved production monitoring tool.</figcaption>
+    </figure>
+    <div class="ai-skills" aria-label="Six focused engineering skills">
+      <article class="ai-skill"><h4>Plan the feature</h4><p>Turn requirements into acceptance criteria and a practical task plan.</p></article>
+      <article class="ai-skill"><h4>Design the contracts</h4><p>Define state ownership, API behavior, caching, and safe retries.</p></article>
+      <article class="ai-skill"><h4>Review the change</h4><p>Inspect lifecycle, concurrency, error handling, and implementation risks.</p></article>
+      <article class="ai-skill"><h4>Verify delivery</h4><p>Map Given–When–Then cases to unit, UI, and API checks.</p></article>
+      <article class="ai-skill"><h4>Debug with telemetry</h4><p>Use logs, request correlation, and reproductions to verify a fix.</p></article>
+      <article class="ai-skill"><h4>Ship with GitHub Actions</h4><p>Prepare Conventional Commits, PRs, CI evidence, and artifacts.</p></article>
+    </div>
+    <p class="ai-coordinator"><strong>One coordinator skill</strong> connects the six focused workflows into the full delivery process.</p></details>
+  </div>
+</section>
+<section id="works" class="s-works target-section">
                             
                             <div class="row">
                                 <div class="column xl-12">
@@ -546,72 +641,20 @@
   </div>
 </section>
 
-<section id="ai-engineering" class="ai-showcase target-section" aria-labelledby="ai-project-title">
-  <div class="ai-wrap">
-    <p class="ai-eyebrow">Featured personal project / AI + engineering</p>
-    <h2 id="ai-project-title">AI-assisted development.<br>Engineering-led delivery.</h2>
-    <p class="ai-lead">My AI-Assisted Mobile Engineering Playbook brings reusable agent skills, a Kotlin/Compose client, and a Node.js expense-claims demo into one practical workflow—from a feature brief to reviewed, tested changes.</p>
-    <div class="ai-tags" aria-label="Project technologies">
-      <span>7 reusable agent skills</span><span>Kotlin + Compose</span><span>Node.js API</span><span>UI &amp; API tests</span><span>GitHub Actions</span>
-    </div>
-    <div class="ai-actions">
-      <a href="https://github.com/omerhabib26/omerhabib" target="_blank" rel="noopener noreferrer">Explore the project &#8599;</a>
-      <a href="https://github.com/omerhabib26/omerhabib/blob/main/docs/walkthrough.md" target="_blank" rel="noopener noreferrer">Read the engineering walkthrough &#8599;</a>
-    </div>
-<div class="ai-overview"><article><h3>Plan & design</h3><p>Feature scope, state ownership, and API contracts.</p></article><article><h3>AI-assisted build</h3><p>Focused tasks with engineer review.</p></article><article><h3>Verify & deliver</h3><p>UI/API tests, CI evidence, PRs, and artifacts.</p></article><article><h3>Debug & improve</h3><p>Events + request IDs → reproduce → fix → regression checks.</p></article></div><details class="portfolio-details ai-more"><summary>Explore the architecture, workflow &amp; debugging diagrams</summary>    <figure class="ai-diagram">
-      <h3>01 / From idea to reviewed delivery</h3>
-      <p>AI supports the work. Acceptance criteria, engineer review, and automated checks guide what gets accepted.</p>
-      <ol class="ai-flow">
-        <li><span class="ai-step">01 / DEFINE</span><h4>Feature brief</h4><p>Scope, acceptance criteria, offline behavior, and failure cases.</p></li>
-        <li><span class="ai-step">02 / DESIGN</span><h4>State &amp; API contracts</h4><p>Ownership, response types, persistence, and retry guarantees.</p></li>
-        <li><span class="ai-step">03 / IMPLEMENT</span><h4>AI-assisted changes</h4><p>Bounded implementation tasks grounded in the agreed contracts.</p></li>
-        <li><span class="ai-step">04 / REVIEW</span><h4>Engineer review &amp; PR</h4><p>Check correctness, document evidence, and use Conventional Commits.</p></li>
-        <li><span class="ai-step">05 / VERIFY</span><h4>GitHub Actions</h4><p>API and browser UI checks, plus Android build, lint, and unit tests.</p></li>
-        <li><span class="ai-step">06 / PREPARE</span><h4>Artifacts &amp; release plan</h4><p>Package reviewed changes and define recovery before release.</p></li>
-      </ol>
-      <div class="ai-feedback"><strong>When checks fail:</strong> logs + request IDs &#8594; reproduce &#8594; fix &#8594; review and verify again.</div>
-      <figcaption>The repository includes CI and artifact workflows. Production deployment and Google Play publishing remain separate steps.</figcaption>
-    </figure>
-    <figure class="ai-diagram">
-      <h3>02 / A claim that can survive a retry</h3>
-      <p>The expense-claims demo explores offline recovery and a lost server response without creating a second claim.</p>
-      <div class="ai-system" role="group" aria-label="Client interface connects to state and persistent pending claim, then to the claims API and idempotency store">
-        <div class="ai-node"><h4>Client interface</h4><p>Kotlin / Jetpack Compose<br>or mobile web client</p><div class="ai-storage">Shows loading, success, and recoverable failure states.</div></div>
-        <span class="ai-arrow" aria-hidden="true">&#8594;</span>
-        <div class="ai-node"><h4>State &amp; pending claim</h4><p>Save the payload and operation key before sending.</p><div class="ai-storage">Persistent storage<br>Android: SharedPreferences<br>Web: localStorage</div></div>
-        <span class="ai-arrow" aria-hidden="true">&#8594;</span>
-        <div class="ai-node"><h4>Node.js claims API</h4><p>Retry with the same key and payload to retrieve the original result.</p><div class="ai-storage">Process-local idempotency store<br>Replay returns the same claim ID.</div></div>
-      </div>
-      <div class="ai-feedback"><strong>Debugging loop:</strong> client state events + server request ID &#8594; correlated timeline &#8594; regression test.</div>
-      <figcaption>A personal demo with local telemetry and in-memory server storage. Durable storage and production authentication would be needed for a production service.</figcaption>
-    </figure>
 
-    <figure class="ai-diagram">
-      <h3>03 / Debug with analytics &amp; telemetry</h3>
-      <p>Use evidence from the client and API to understand where a submission failed, then verify the fix.</p>
-      <div class="ai-system" role="group" aria-label="Client events and server logs feed a correlated timeline, then a reproduction and bounded fix">
-        <div class="ai-node"><h4>Collect the signals</h4><p>Client state transitions and failure events, alongside server logs and request IDs.</p><div class="ai-storage">Capture the outcome and context.<br>Keep amounts, tokens, and personal details out of events.</div></div>
-        <span class="ai-arrow" aria-hidden="true">&#8594;</span>
-        <div class="ai-node"><h4>Correlate the timeline</h4><p>Connect client behavior to the server response. Check what happened before the failure.</p><div class="ai-storage">Example investigation<br>Did the server accept the claim while the response was lost?</div></div>
-        <span class="ai-arrow" aria-hidden="true">&#8594;</span>
-        <div class="ai-node"><h4>Reproduce &amp; fix</h4><p>Test the hypothesis, make a bounded change, and review the affected contracts.</p><div class="ai-storage">Confirm recovery<br>Retry the original operation without creating a duplicate.</div></div>
-      </div>
-      <div class="ai-feedback"><strong>Close the loop:</strong> fix &#8594; API + UI regression checks &#8594; CI evidence &#8594; engineer review.</div>
-      <figcaption>The demo uses structured local events. The same investigation approach can be mapped to Crashlytics, Firebase Analytics, Segment, or another approved production monitoring tool.</figcaption>
-    </figure>
-    <div class="ai-skills" aria-label="Six focused engineering skills">
-      <article class="ai-skill"><h4>Plan the feature</h4><p>Turn requirements into acceptance criteria and a practical task plan.</p></article>
-      <article class="ai-skill"><h4>Design the contracts</h4><p>Define state ownership, API behavior, caching, and safe retries.</p></article>
-      <article class="ai-skill"><h4>Review the change</h4><p>Inspect lifecycle, concurrency, error handling, and implementation risks.</p></article>
-      <article class="ai-skill"><h4>Verify delivery</h4><p>Map Given–When–Then cases to unit, UI, and API checks.</p></article>
-      <article class="ai-skill"><h4>Debug with telemetry</h4><p>Use logs, request correlation, and reproductions to verify a fix.</p></article>
-      <article class="ai-skill"><h4>Ship with GitHub Actions</h4><p>Prepare Conventional Commits, PRs, CI evidence, and artifacts.</p></article>
-    </div>
-    <p class="ai-coordinator"><strong>One coordinator skill</strong> connects the six focused workflows into the full delivery process.</p></details>
-  </div>
-</section>
 
- <footer id="footer" class="s-footer target-section">
+ <section id="cv-preview" class="cv-section target-section" aria-labelledby="cv-title">
+<div class="delivery-wrap">
+<p class="delivery-kicker">Experience &amp; credentials</p>
+<h2 id="cv-title">Preview my CV.</h2>
+<p>Explore my mobile engineering experience, AI workflow, projects, and technical expertise without leaving the portfolio.</p>
+<div class="cv-actions"><a href="assets/Omer_Habib_Resume.pdf" target="_blank" rel="noopener noreferrer">Open PDF in a new tab &#8599;</a><a href="assets/Omer_Habib_Resume.pdf" download>Download CV &#8595;</a></div>
+<details class="portfolio-details cv-details"><summary>Show CV preview</summary>
+<iframe src="assets/Omer_Habib_Resume.pdf#view=FitH" title="Moin Omer Habib — CV PDF preview" loading="lazy"></iframe>
+<p class="cv-fallback">If your browser does not display the embedded PDF, use “Open PDF in a new tab” above.</p>
+</details>
+</div></section>
+<footer id="footer" class="s-footer target-section">
                                     
                                     <div class="row">
                                         <div class="column lg-12">
@@ -651,7 +694,7 @@
                                             </div>
                                             
                                             <div class="column xl-6 tab-12">
-                                                <a class="btn btn--stroke btn--large u-fullwidth" href="assets/Omer_Habib_Resume.pdf">Get My CV</a>
+                                                <a class="btn btn--stroke btn--large u-fullwidth" href="#cv-preview">Preview My CV</a>
                                             </div>
                                             
                                         </div> <div class="row s-footer__bottom">
@@ -724,7 +767,7 @@
                     } else if (/(^|\.)github\.com$/i.test(url.hostname)) {
                         track('social_click', {platform: 'github', link_location: location});
                     }
-                } else if (/^#(?:intro|about|works|feature-delivery|ai-engineering|footer)$/.test(href)) {
+                } else if (/^#(?:intro|about|works|feature-delivery|ai-engineering|cv-preview|footer)$/.test(href)) {
                     track('navigation_click', {section_name: href.slice(1), link_location: location});
                 }
             });
@@ -751,7 +794,7 @@
                         }
                     });
                 }, {threshold: 0.1});
-                document.querySelectorAll('#intro, #about, #works, #feature-delivery, #ai-engineering, #footer')
+                document.querySelectorAll('#intro, #about, #works, #feature-delivery, #ai-engineering, #cv-preview, #footer')
                     .forEach(function (section) { observer.observe(section); });
             }
         }());
