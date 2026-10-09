@@ -234,6 +234,20 @@
 .cv-details .cv-fallback {padding:14px 20px;font-size:14px;margin:0;}
 @media(max-width:600px){.cv-section{padding:60px 0;}.cv-details iframe{height:65vh;min-height:400px;}.hero-ai-badge{font-size:13px;}.s-intro__content-btns .btn{padding-left:14px;padding-right:14px;}}
 .ai-daily {margin:44px 0;}.ai-showcase .ai-daily > h3 {font-size:30px;}.ai-daily-lead {font-size:17px;line-height:1.65;color:#b7cace;max-width:850px;}
+
+.resume-dialog {width:min(1120px,94vw);max-width:94vw;height:90vh;max-height:90vh;padding:0;border:1px solid #446458;border-radius:14px;background:#f5f7f2;color:#173d2d;overflow:hidden;}
+.resume-dialog[open] {display:flex;flex-direction:column;}
+.resume-dialog::backdrop {background:rgba(5,15,12,.78);}
+.resume-dialog-header {display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 22px;border-bottom:1px solid #c5d5ca;flex-shrink:0;}
+.resume-dialog-header h2 {font-size:26px;margin:0;}
+.resume-dialog-actions {display:flex;align-items:center;gap:18px;}
+.resume-dialog-actions a {font-size:14px;font-weight:600;color:#245b3f;}
+.resume-close {font:600 14px/1.4 sans-serif;background:#173d2d;color:#fff;border:0;border-radius:6px;padding:10px 16px;cursor:pointer;margin:0;height:auto;}
+.resume-close:focus-visible,.resume-dialog a:focus-visible {outline:3px solid #3b9467;outline-offset:3px;}
+.resume-dialog iframe {display:block;width:100%;flex:1;min-height:0;border:0;background:#fff;}
+.resume-dialog-fallback {font-size:13px;line-height:1.5;padding:10px 22px;margin:0;flex-shrink:0;}
+.resume-dialog-fallback a {color:#245b3f;text-decoration:underline;}
+@media(max-width:600px){.resume-dialog{width:96vw;max-width:96vw;height:92vh;max-height:92vh;}.resume-dialog-header{padding:12px;align-items:flex-start;}.resume-dialog-header h2{font-size:21px;}.resume-dialog-actions{gap:10px;}.resume-dialog-actions a{font-size:12px;}.resume-close{padding:8px 10px;}.resume-dialog-fallback{padding:8px 12px;}}
 </style>
                         
                         
@@ -280,7 +294,7 @@
 <li><a class="smoothscroll" href="#works">Works</a></li>
 <li><a class="smoothscroll" href="#about">About</a></li>
 <li><a class="smoothscroll" href="#feature-delivery">Process</a></li>
-<li><a class="smoothscroll" href="#cv-preview">CV</a></li>
+<li><a class="" href="assets/Omer_Habib_Resume.pdf" data-resume-preview>View My Resume</a></li>
 <li><a class="smoothscroll" href="#footer">Contact</a></li>
 </ul> </nav> </div> </header> <section id="intro" class="s-intro target-section">
                             
@@ -300,7 +314,7 @@
                                         
                                         <div class="s-intro__content-btns">
                                             <a class="smoothscroll btn hero-ai-cta" href="#ai-engineering">Explore AI Project</a>
-                                            <a class="smoothscroll btn btn--stroke" href="#cv-preview">Preview CV</a>
+                                            <a class="btn btn--stroke" href="assets/Omer_Habib_Resume.pdf" data-resume-preview>View My Resume</a>
 <a class="smoothscroll hero-project-link" href="#works">View mobile projects &#8594;</a>
                                         </div> </div> </div> </div> <ul class="s-intro__social social-list">
                                             <li>
@@ -644,15 +658,9 @@
 
 
  <section id="cv-preview" class="cv-section target-section" aria-labelledby="cv-title">
-<div class="delivery-wrap">
-<p class="delivery-kicker">Experience &amp; credentials</p>
-<h2 id="cv-title">Preview my CV.</h2>
-<p>Explore my mobile engineering experience, AI workflow, projects, and technical expertise without leaving the portfolio.</p>
-<div class="cv-actions"><a href="assets/Omer_Habib_Resume.pdf" target="_blank" rel="noopener noreferrer">Open PDF in a new tab &#8599;</a><a href="assets/Omer_Habib_Resume.pdf" download>Download CV &#8595;</a></div>
-<details class="portfolio-details cv-details"><summary>Show CV preview</summary>
-<iframe src="assets/Omer_Habib_Resume.pdf#view=FitH" title="Moin Omer Habib — CV PDF preview" loading="lazy"></iframe>
-<p class="cv-fallback">If your browser does not display the embedded PDF, use “Open PDF in a new tab” above.</p>
-</details>
+<div class="delivery-wrap"><p class="delivery-kicker">Experience &amp; credentials</p>
+<h2 id="cv-title">My experience, in focus.</h2>
+<div class="cv-actions"><a href="assets/Omer_Habib_Resume.pdf" data-resume-preview>View My Resume</a><a href="assets/Omer_Habib_Resume.pdf" download>Download Resume &#8595;</a></div>
 </div></section>
 <footer id="footer" class="s-footer target-section">
                                     
@@ -694,7 +702,7 @@
                                             </div>
                                             
                                             <div class="column xl-6 tab-12">
-                                                <a class="btn btn--stroke btn--large u-fullwidth" href="#cv-preview">Preview My CV</a>
+                                                <a class="btn btn--stroke btn--large u-fullwidth" href="assets/Omer_Habib_Resume.pdf" data-resume-preview>View My Resume</a>
                                             </div>
                                             
                                         </div> <div class="row s-footer__bottom">
@@ -806,6 +814,38 @@
             </svg>
             <span>WhatsApp Chat</span>
         </a>
-    </body>
+    <dialog id="resume-dialog" class="resume-dialog" aria-labelledby="resume-dialog-title">
+<div class="resume-dialog-header"><h2 id="resume-dialog-title">My Resume</h2>
+<div class="resume-dialog-actions"><a href="assets/Omer_Habib_Resume.pdf" download>Download Resume &#8595;</a><button type="button" class="resume-close" aria-label="Close resume preview">Close &#215;</button></div></div>
+<iframe data-src="assets/Omer_Habib_Resume.pdf#view=FitH" title="Moin Omer Habib — resume PDF"></iframe>
+<p class="resume-dialog-fallback">PDF not displaying? <a href="assets/Omer_Habib_Resume.pdf" target="_blank" rel="noopener noreferrer">Open it in a new tab &#8599;</a></p>
+</dialog>
+<script>
+(function () {
+'use strict';
+var dialog = document.getElementById('resume-dialog');
+var frame = dialog.querySelector('iframe');
+var previousOverflow;
+document.querySelectorAll('[data-resume-preview]').forEach(function (trigger) {
+trigger.addEventListener('click', function (event) {
+if (typeof dialog.showModal !== 'function') return;
+event.preventDefault();
+if (!frame.getAttribute('src')) frame.setAttribute('src', frame.getAttribute('data-src'));
+previousOverflow = document.body.style.overflow;
+dialog.showModal();
+document.body.style.overflow = 'hidden';
+if (typeof window.gtag === 'function') window.gtag('event', 'cv_preview_open', {link_location: trigger.closest('header') ? 'header' : trigger.closest('footer') ? 'footer' : 'content'});
+});
+});
+dialog.querySelector('.resume-close').addEventListener('click', function () { dialog.close(); });
+dialog.addEventListener('click', function (event) {
+if (event.target !== dialog) return;
+var bounds = dialog.getBoundingClientRect();
+if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
+});
+dialog.addEventListener('close', function () { document.body.style.overflow = previousOverflow || ''; });
+}());
+</script>
+</body>
 </html>
 
