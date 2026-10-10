@@ -305,6 +305,45 @@
   .s-intro__content-btns .btn { width: 100%; margin: 0 0 10px; }
   .s-intro__scroll-down { display: none; }
 }
+
+/* Compact mobile reading path */
+.ai-daily-details {border-color:#36565a;}
+.ai-daily-details > summary {color:#a7edc9;}
+.ai-daily-details[open] > .ai-overview {padding:0 16px;}
+.ai-daily-details[open] > .ai-feedback {margin:0 16px 16px;}
+.broader-details {margin-top:18px;}
+.broader-details > .s-about__blocks {padding:0 16px 16px;}
+@media screen and (max-width:700px) {
+  .s-intro, .s-intro__content {min-height:0;}
+  .s-intro__content {padding-bottom:40px;}
+  .impact-strip {padding:22px 12px;}
+  .impact-grid {grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
+  .impact-grid strong {font-size:22px;}
+  .impact-grid span {font-size:11px;line-height:1.3;}
+  .ai-showcase,.delivery-section,.cv-section {padding:54px 0;}
+  .s-works {padding-top:54px;padding-bottom:36px;}
+  .s-about {padding-top:54px !important;padding-bottom:48px;}
+  .broader-projects {padding-top:28px !important;padding-bottom:42px !important;}
+  .ai-showcase h2,.delivery-section h2 {font-size:clamp(32px,8vw,42px);}
+  .ai-showcase .ai-lead,.delivery-section .delivery-lead {font-size:16px;line-height:1.55;}
+  .ai-showcase .ai-actions {margin-bottom:24px;}
+  .ai-overview,.delivery-overview {grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
+  .ai-overview article,.delivery-overview article {padding:14px;}
+  .ai-showcase .ai-overview h3,.delivery-overview h3 {font-size:17px;line-height:1.25;margin:6px 0;}
+  .ai-overview p,.delivery-overview p {font-size:12px;line-height:1.45;}
+  .ai-daily {margin:28px 0 18px;}
+  .ai-showcase .ai-daily > h3 {font-size:24px;}
+  .ai-daily-lead {font-size:15px;line-height:1.55;}
+  .delivery-inputs {grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
+  .delivery-input {padding:12px;}
+  .delivery-input strong {font-size:14px;}
+  .delivery-input p {font-size:12px;}
+  .project-caption {padding:10px 4px 16px;}
+  .project-caption h3 {font-size:18px;}
+  .folio-entries .entry__link {aspect-ratio:16/9 !important;overflow:hidden;}
+  .folio-entries .entry__thumb,.folio-entries .entry__thumb img {width:100%;height:100%;object-fit:cover;}
+}
+.mobile-workflow-details {border-color:#36565a;}.mobile-workflow-details > summary {color:#a7edc9;}.mobile-workflow-details .ai-diagram {margin:18px;}
 </style>
                         
                         
@@ -408,7 +447,7 @@
   <div class="ai-wrap">
     <p class="ai-eyebrow">Featured project · AI-assisted mobile engineering</p>
     <h2 id="ai-project-title">AI-Assisted Mobile<br>Engineering Playbook.</h2>
-    <p class="ai-lead">My AI-Assisted Mobile Engineering Playbook connects seven reusable agent skills with Kotlin/Compose and Node.js reference implementations, architecture diagrams, UI/API testing, code review, GitHub Actions, and telemetry-assisted debugging.</p>
+    <p class="ai-lead">Seven reusable agent skills connect Kotlin/Compose and Node.js examples with planning, review, UI/API tests, GitHub Actions, and telemetry-assisted debugging.</p>
     <div class="ai-tags" aria-label="Project technologies">
       <span>7 reusable agent skills</span><span>Kotlin + Compose</span><span>Node.js API</span><span>UI &amp; API tests</span><span>GitHub Actions</span>
     </div>
@@ -416,7 +455,19 @@
       <a href="https://github.com/omerhabib26/omerhabib" target="_blank" rel="noopener noreferrer">Explore the project &#8599;</a>
       <a href="https://github.com/omerhabib26/omerhabib/blob/main/docs/walkthrough.md" target="_blank" rel="noopener noreferrer">Read the engineering walkthrough &#8599;</a>
     </div>
-<div class="ai-overview"><article><h3>Plan & design</h3><p>Feature scope, state ownership, and API contracts.</p></article><article><h3>AI-assisted build</h3><p>Focused tasks with engineer review.</p></article><article><h3>Verify & deliver</h3><p>UI/API tests, CI evidence, PRs, and artifacts.</p></article><article><h3>Debug & improve</h3><p>Events + request IDs → reproduce → fix → regression checks.</p></article></div><figure class="ai-diagram">
+<div class="ai-overview"><article><h3>Plan & design</h3><p>Feature scope, state ownership, and API contracts.</p></article><article><h3>AI-assisted build</h3><p>Focused tasks with engineer review.</p></article><article><h3>Verify & deliver</h3><p>UI/API tests, CI evidence, PRs, and artifacts.</p></article><article><h3>Debug & improve</h3><p>Events + request IDs → reproduce → fix → regression checks.</p></article></div>
+<div class="ai-daily" aria-labelledby="ai-daily-title">
+<h3 id="ai-daily-title">How AI makes everyday work easier.</h3>
+<p class="ai-daily-lead">I use AI to clarify requirements, draft code and tests, review changes, investigate failures, and communicate decisions. I verify behavior and own the result.</p>
+<details class="portfolio-details ai-daily-details"><summary>Explore four everyday AI workflows</summary><div class="ai-overview">
+<article><span class="ai-step">PLAN WITH CLARITY</span><h3>From request to action</h3><p>Turn client notes into a feature brief, clarify missing requirements, surface edge cases, and prepare a task plan for team discussion.</p></article>
+<article><span class="ai-step">BUILD WITH SUPPORT</span><h3>Code, tests &amp; review</h3><p>Draft focused implementation options and Given–When–Then tests, explore unfamiliar code, and use review prompts to catch gaps before a PR.</p></article>
+<article><span class="ai-step">DEBUG WITH EVIDENCE</span><h3>Find the next useful check</h3><p>Organise sanitised logs and request IDs into a timeline, propose hypotheses, and turn a reproduced failure into regression coverage.</p></article>
+<article><span class="ai-step">SIMPLIFY THE ROUTINE</span><h3>Communicate &amp; learn</h3><p>Prepare PR descriptions, release notes, meeting summaries, and clear technical explanations. Use structured practice to learn a new concept.</p></article>
+</div>
+<div class="ai-feedback"><strong>My working principle:</strong> AI helps draft and investigate; I validate behavior, review code, and own the final decisions. Sensitive client data stays out of prompts.</div></details>
+</div>
+<details class="portfolio-details mobile-workflow-details"><summary>Explore the six-step AI workflow</summary><figure class="ai-diagram">
       <h3>01 / From idea to reviewed delivery</h3>
       <p>AI supports the work. Acceptance criteria, engineer review, and automated checks guide what gets accepted.</p>
       <ol class="ai-flow">
@@ -429,19 +480,7 @@
       </ol>
       <div class="ai-feedback"><strong>When checks fail:</strong> logs + request IDs &#8594; reproduce &#8594; fix &#8594; review and verify again.</div>
       <figcaption>The repository includes CI and artifact workflows. Production deployment and Google Play publishing remain separate steps.</figcaption>
-    </figure>
-<div class="ai-daily" aria-labelledby="ai-daily-title">
-<h3 id="ai-daily-title">How AI makes everyday work easier.</h3>
-<p class="ai-daily-lead">AI makes my daily engineering work more focused. I use it to clarify requirements, explore solutions, draft code and tests, review changes, and investigate failures using logs and telemetry. It also helps me prepare documentation and communicate decisions across teams. I review the output, verify the behavior, and remain responsible for what ships.</p>
-<div class="ai-overview">
-<article><span class="ai-step">PLAN WITH CLARITY</span><h3>From request to action</h3><p>Turn client notes into a feature brief, clarify missing requirements, surface edge cases, and prepare a task plan for team discussion.</p></article>
-<article><span class="ai-step">BUILD WITH SUPPORT</span><h3>Code, tests &amp; review</h3><p>Draft focused implementation options and Given–When–Then tests, explore unfamiliar code, and use review prompts to catch gaps before a PR.</p></article>
-<article><span class="ai-step">DEBUG WITH EVIDENCE</span><h3>Find the next useful check</h3><p>Organise sanitised logs and request IDs into a timeline, propose hypotheses, and turn a reproduced failure into regression coverage.</p></article>
-<article><span class="ai-step">SIMPLIFY THE ROUTINE</span><h3>Communicate &amp; learn</h3><p>Prepare PR descriptions, release notes, meeting summaries, and clear technical explanations. Use structured practice to learn a new concept.</p></article>
-</div>
-<div class="ai-feedback"><strong>My working principle:</strong> AI helps draft and investigate; I validate behavior, review code, and own the final decisions. Sensitive client data stays out of prompts.</div>
-</div>
-<details class="portfolio-details ai-more"><summary>Explore the system architecture, debugging &amp; agent skills</summary>    
+    </figure></details><details class="portfolio-details ai-more"><summary>Explore system architecture &amp; debugging diagrams</summary>    
     <figure class="ai-diagram">
       <h3>02 / A claim that can survive a retry</h3>
       <p>The expense-claims demo explores offline recovery and a lost server response without creating a second claim.</p>
@@ -670,7 +709,7 @@
                                     <p class="attention-getter">Cross-platform delivery, hybrid integration, and practical backend development.</p>
                                 </div>
                             </div>
-                            <div class="row s-about__blocks">
+                            <details class="portfolio-details broader-details"><summary>Explore cross-platform &amp; backend work</summary><div class="row s-about__blocks">
                                 <article class="column xl-4 md-12 s-about__block">
                                     <h4 class="s-about__block-title">Schoolgram &amp; Cross-Platform Apps</h4>
                                     <p><strong>Angular · Ionic · React Native</strong></p>
@@ -686,8 +725,7 @@
                                     <p><strong>Node.js · Backend Development</strong></p>
                                     <p>Worked on an ERP portal covering expense reimbursement, claims, and authentication. This experience complements my mobile work with practical understanding of backend workflows and API boundaries.</p>
                                 </article>
-                            </div>
-                        </section>
+                            </div></details></section>
 
                         
 
@@ -695,7 +733,7 @@
   <div class="delivery-wrap">
     <p class="delivery-kicker">System design + cross-team delivery</p>
     <h2 id="delivery-title">From a feature request<br>to production feedback.</h2>
-    <p class="delivery-lead">Reliable delivery connects product thinking, system design, mobile implementation, and production operations. This is the complete cycle I use to structure feature work—with shared decisions and clear evidence at each handoff.</p>
+    <p class="delivery-lead">From a request or data signal, I align requirements, UI and API contracts, implementation, testing, release, and production feedback.</p>
     <div class="delivery-inputs" aria-label="Two starting points for feature work">
       <div class="delivery-input"><strong>Client or product request</strong><p>A user need, business requirement, or new capability.</p></div>
       <div class="delivery-input"><strong>Data-informed opportunity</strong><p>Analytics, support feedback, or production behavior reveals an improvement.</p></div>
@@ -901,6 +939,16 @@ var bounds = dialog.getBoundingClientRect();
 if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
 });
 dialog.addEventListener('close', function () { document.body.style.overflow = previousOverflow || ''; });
+}());
+</script>
+<script>
+(function () {
+  var query = window.matchMedia('(max-width: 700px)');
+  var details = document.querySelectorAll('.broader-details, .mobile-workflow-details');
+  function syncReadingMode() { details.forEach(function (item) { item.open = !query.matches; }); }
+  syncReadingMode();
+  if (query.addEventListener) query.addEventListener('change', syncReadingMode);
+  else query.addListener(syncReadingMode);
 }());
 </script>
 </body>
