@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /index%20copy.html
+Disallow: /styles.html
+
+Sitemap: https://omerhabib26.github.io/sitemap.xml
