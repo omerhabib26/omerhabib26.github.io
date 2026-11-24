@@ -240,6 +240,8 @@
 @media (max-width:600px){.cv-timeline li {grid-template-columns:1fr;}.cv-timeline li span {grid-row:auto;}}
 .cv-actions a {padding:12px 18px;border:1px solid #267258;border-radius:6px;color:#173d2d;font-size:15px;font-weight:600;}
 .cv-actions a:last-child {background:#173d2d;color:white;}
+.cv-section .cv-alt {margin:18px 0 0;font-size:15px;color:#4a5a51;}
+.cv-section .cv-alt a {color:#245b3f;font-weight:600;text-decoration:underline;text-underline-offset:3px;}
 .cv-details iframe {display:block;width:100%;height:780px;height:min(80vh,900px);border:0;background:white;}
 .cv-details .cv-fallback {padding:14px 20px;font-size:14px;margin:0;}
 @media(max-width:600px){.cv-section{padding:60px 0;}.cv-details iframe{height:65vh;min-height:400px;}.hero-ai-badge{font-size:13px;}.s-intro__content-btns .btn{padding-left:14px;padding-right:14px;}}
@@ -475,7 +477,7 @@
                                             <div class="entry__cat">edTech</div>
                                         </div>
                                     </a>
-                                    <div class="project-caption"><h3>edX / Open edX</h3><p class="project-meta">2020 – 2025 · Lead Android engineer on the edX mobile team</p><p class="project-desc">Java → Kotlin → Compose modernization, modular Clean Architecture, purchases, discussions, notifications, video and offline WebView content. 99.2%+ crash-free sessions.</p><p>Kotlin & Compose modernization · Mobile learning at scale</p></div><div class="glightbox-desc entry__desc-01">
+                                    <div class="project-caption"><h3>edX / Open edX</h3><p class="project-meta">2020 – 2025 · Lead Android engineer on the edX mobile team</p><p class="project-desc">Java → Kotlin → Compose modernization with feature modules and Clean Architecture. Raised crash-free users from 80% to 99.2%+, ran A/B tests and feature-flagged rollouts, and cut deployment time by 40%. Delivered purchases, SSO, discussions, video and offline WebView content.</p><p>Kotlin & Compose modernization · Mobile learning at scale</p></div><div class="glightbox-desc entry__desc-01">
                                         <p>
                                         Built and maintained the Android learning experience for a global education platform. Contributed to Java → Kotlin → Compose modernization, modular architecture, and video playback analytics. Integrated WebView course content with JavaScript injection, file uploads, notifications, and offline support.
                                         </p>
@@ -767,12 +769,13 @@
 <h2 id="cv-title">My experience, in focus.</h2>
 <ul class="cv-timeline">
 <li><span>Aug 2017 – Present</span><strong>Arbisoft Global · Senior Mobile Engineer</strong> Mobile engineering for international product teams: Android, cross-platform, and backend-integrated delivery, code reviews, CI/CD, and mentoring.</li>
-<li><span>Sep 2025 – Present</span><strong><a href="https://schoolgram.io/" target="_blank" rel="noopener">Schoolgram</a></strong> Leading the Schoolgram mobile app and backend.</li>
+<li><span>Sep 2025 – Present</span><strong><a href="https://schoolgram.io/" target="_blank" rel="noopener">Schoolgram</a> (Arbisoft product)</strong> Leading mobile and backend in a 12-member team, with an AI-assisted delivery workflow for monthly releases.</li>
 <li><span>Jul 2020 – Aug 2025</span><strong>edX / Open edX Android</strong> Lead Android engineer on the edX mobile team; contributor and reviewer for Open edX Android.</li>
 <li><span>Aug 2016 – Aug 2017</span><strong>Tecjaunt</strong> Android Developer building Java apps with REST APIs, persistence, and Google Play releases.</li>
 <li><span>2012 – 2016</span><strong>University of the Punjab</strong> BS Information Technology.</li>
 </ul>
 <div class="cv-actions"><a href="assets/Omer_Habib_Resume.pdf" data-resume-preview>View My Resume</a><a href="assets/Omer_Habib_Resume.pdf" download>Download Resume &#8595;</a></div>
+<p class="cv-alt">Applying for an Android role? <a href="assets/Moin_Omer_Habib_CV_Android.pdf" download>Download the Android-focused CV &#8594;</a></p>
 </div></section>
 <footer id="footer" class="s-footer target-section">
                                     
@@ -872,7 +875,7 @@
                     track('contact_click', {contact_method: 'whatsapp', link_location: 'floating_button'});
                 } else if (/^tel:/i.test(href)) {
                     track('contact_click', {contact_method: 'phone', link_location: location});
-                } else if (/assets\/Omer_Habib_Resume\.pdf(?:[?#]|$)/i.test(href)) {
+                } else if (/assets\/[^?#]+\.pdf(?:[?#]|$)/i.test(href)) {
                     // Custom event is distinct from enhanced measurement's file_download.
                     track('cv_click', {link_location: location});
                 } else if (link.matches('.entry__link.glightbox')) {
