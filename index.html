@@ -6,6 +6,10 @@
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', wait_for_update: 500,
+                region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH']});
+            gtag('consent', 'default', {ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'granted'});
+            try { var savedConsent = localStorage.getItem('analytics_consent'); if (savedConsent) gtag('consent', 'update', {analytics_storage: savedConsent}); } catch (e) {}
             gtag('js', new Date());
             gtag('config', 'G-14NEJEX6SZ');
         </script>
@@ -247,6 +251,13 @@
 @media(max-width:600px){.cv-section{padding:60px 0;}.cv-details iframe{height:65vh;min-height:400px;}.hero-ai-badge{font-size:13px;}.s-intro__content-btns .btn{padding-left:14px;padding-right:14px;}}
 .ai-daily {margin:44px 0;}.ai-showcase .ai-daily > h3 {font-size:30px;}.ai-daily-lead {font-size:17px;line-height:1.65;color:#b7cace;max-width:850px;}
 
+.consent-banner {position:fixed;right:20px;bottom:20px;z-index:1001;max-width:380px;background:#173d2d;color:#eef5f0;border-radius:12px;padding:16px 18px;box-shadow:0 8px 28px rgba(0,0,0,.3);font:14px/1.5 sans-serif;}
+.consent-banner[hidden] {display:none;}
+.consent-banner p {margin:0 0 12px;font-size:14px;line-height:1.5;color:#eef5f0;}
+.consent-actions {display:flex;gap:10px;justify-content:flex-end;}
+.consent-actions button {font:600 14px/1.2 sans-serif;border-radius:6px;padding:9px 16px;margin:0;height:auto;cursor:pointer;letter-spacing:0;text-transform:none;border:1px solid #a3efc4;background:transparent;color:#eef5f0;}
+.consent-actions button[data-consent="granted"] {background:#a3efc4;color:#173d2d;}
+@media(max-width:500px){.consent-banner{left:12px;right:12px;bottom:80px;max-width:none;}}
 .resume-dialog {width:min(1120px,94vw);max-width:94vw;height:90vh;max-height:90vh;padding:0;border:1px solid #446458;border-radius:14px;background:#f5f7f2;color:#173d2d;overflow:hidden;}
 .resume-dialog[open] {display:flex;flex-direction:column;}
 .resume-dialog::backdrop {background:rgba(5,15,12,.78);}
@@ -884,7 +895,7 @@
                     track('contact_click', {contact_method: 'phone', link_location: location});
                 } else if (/assets\/[^?#]+\.pdf(?:[?#]|$)/i.test(href)) {
                     // Custom event is distinct from enhanced measurement's file_download.
-                    track('cv_click', {link_location: location});
+                    track('cv_click', {link_location: location, cv_version: /android/i.test(href) ? 'android' : 'mobile'});
                 } else if (link.matches('.entry__link.glightbox')) {
                     var title = (link.getAttribute('data-glightbox') || '')
                         .match(/title:\s*([^;]+)/);
@@ -892,14 +903,34 @@
                 } else if (/^https?:/i.test(href)) {
                     var url;
                     try { url = new URL(href, window.location.href); } catch (error) { return; }
+                    var path = url.pathname.replace(/\/+$/, '');
                     if (/(^|\.)linkedin\.com$/i.test(url.hostname)) {
                         track('social_click', {platform: 'linkedin', link_location: location});
-                    } else if (/(^|\.)github\.com$/i.test(url.hostname)) {
+                    } else if (/(^|\.)github\.com$/i.test(url.hostname) && /^\/omerhabib26$/i.test(path)) {
                         track('social_click', {platform: 'github', link_location: location});
+                    } else if (/(^|\.)github\.com$/i.test(url.hostname) || /(^|\.)schoolgram\.io$/i.test(url.hostname)) {
+                        var project = /walkthrough/i.test(path) ? 'ai_playbook_walkthrough' :
+                            /\/omerhabib26\/omerhabib$/i.test(path) ? 'ai_playbook' :
+                            /openedx/i.test(path) ? 'open_edx_android' :
+                            /schoolgram/i.test(url.hostname) ? 'schoolgram' : 'github_other';
+                        track('project_link_click', {project_name: project, link_location: location});
+                    } else if (url.hostname !== window.location.hostname) {
+                        track('outbound_click', {link_domain: url.hostname, link_location: location});
                     }
                 } else if (/^#(?:intro|about|works|feature-delivery|ai-engineering|cv-preview|footer)$/.test(href)) {
                     track('navigation_click', {section_name: href.slice(1), link_location: location});
                 }
+            });
+
+            // Record when a visitor expands a collapsible block (user clicks only, not automatic opening).
+            document.addEventListener('click', function (event) {
+                var summary = event.target.closest && event.target.closest('summary');
+                if (!summary) return;
+                var details = summary.parentElement;
+                if (!details || details.open) return;
+                var label = (summary.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80);
+                var section = details.closest('section[id]');
+                track('details_open', {details_label: label, section_name: section ? section.id : 'page'});
             });
 
             // Count each section once, after it stays in view for at least one second.
@@ -938,7 +969,29 @@
             <span>WhatsApp Chat</span>
         </a>
         <script>(function(){var b=document.querySelector('.whatsapp-chat');if(!b)return;function u(){b.classList.toggle('is-waiting',window.innerWidth<=500&&window.scrollY<window.innerHeight*1.1);}window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);document.addEventListener('DOMContentLoaded',u);u();}());</script>
-    <dialog id="resume-dialog" class="resume-dialog" aria-labelledby="resume-dialog-title">
+    <div id="consent-banner" class="consent-banner" role="region" aria-label="Analytics consent" hidden>
+<p>This site uses Google Analytics cookies to understand which sections visitors find useful. No ads, and no data is sold.</p>
+<div class="consent-actions"><button type="button" data-consent="denied">Decline</button><button type="button" data-consent="granted">Accept</button></div>
+</div>
+<script>
+(function () {
+  var banner = document.getElementById('consent-banner');
+  var tz = '';
+  try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+  var stored = null;
+  try { stored = localStorage.getItem('analytics_consent'); } catch (e) {}
+  if (stored || !/^(Europe\/|Atlantic\/(Reykjavik|Canary|Madeira|Azores))/.test(tz)) return;
+  banner.hidden = false;
+  banner.addEventListener('click', function (event) {
+    var choice = event.target.getAttribute && event.target.getAttribute('data-consent');
+    if (!choice) return;
+    try { localStorage.setItem('analytics_consent', choice); } catch (e) {}
+    if (typeof window.gtag === 'function') window.gtag('consent', 'update', {analytics_storage: choice});
+    banner.hidden = true;
+  });
+}());
+</script>
+<dialog id="resume-dialog" class="resume-dialog" aria-labelledby="resume-dialog-title">
 <div class="resume-dialog-header"><h2 id="resume-dialog-title" tabindex="-1" autofocus>My Resume</h2>
 <div class="resume-switch" role="group" aria-label="Choose CV version">
 <button type="button" class="resume-switch-btn" data-cv="mobile" aria-pressed="true">Mobile &amp; Cross-Platform</button>
@@ -991,7 +1044,7 @@ if (!frame.getAttribute('src')) frame.setAttribute('src', frame.getAttribute('da
 previousOverflow = document.body.style.overflow;
 dialog.showModal();
 document.body.style.overflow = 'hidden';
-if (typeof window.gtag === 'function') window.gtag('event', 'cv_preview_open', {link_location: trigger.closest('header') ? 'header' : trigger.closest('footer') ? 'footer' : 'content'});
+if (typeof window.gtag === 'function') window.gtag('event', 'cv_preview_open', {cv_version: currentCv, link_location: trigger.closest('header') ? 'header' : trigger.closest('footer') ? 'footer' : 'content'});
 });
 });
 dialog.querySelector('.resume-close').addEventListener('click', function () { dialog.close(); });

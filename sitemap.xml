@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://omerhabib26.github.io/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://omerhabib26.github.io/assets/Omer_Habib_Resume.pdf</loc>
+    <lastmod>2026-11-25</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://omerhabib26.github.io/assets/Moin_Omer_Habib_CV_Android.pdf</loc>
+    <lastmod>2026-11-25</lastmod>
+    <priority>0.6</priority>
+  </url>
+</urlset>
