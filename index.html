@@ -255,8 +255,10 @@
 .resume-dialog-actions {display:flex;align-items:center;gap:18px;}
 .resume-switch {display:inline-flex;gap:4px;padding:4px;border:1px solid #c5d5ca;border-radius:999px;background:#fff;margin-right:auto;margin-left:12px;}
 .resume-switch-btn {font:600 14px/1.2 sans-serif;color:#245b3f;background:transparent;border:0;border-radius:999px;padding:9px 16px;margin:0;height:auto;cursor:pointer;letter-spacing:0;text-transform:none;}
-.resume-switch-btn:hover {background:#e6efe8;}
-.resume-switch-btn[aria-pressed="true"] {background:#173d2d;color:#fff;}
+.resume-switch-btn:hover,.resume-switch-btn:focus {background:#e6efe8;color:#245b3f;box-shadow:none;outline:none;}
+.resume-switch-btn[aria-pressed="true"],.resume-switch-btn[aria-pressed="true"]:hover,.resume-switch-btn[aria-pressed="true"]:focus {background:#173d2d;color:#fff;}
+.resume-switch-btn[aria-pressed="false"]:focus:not(:focus-visible) {background:transparent;}
+#resume-dialog-title:focus {outline:none;}
 .resume-switch-btn:focus-visible {outline:3px solid #3b9467;outline-offset:2px;}
 .resume-dialog-actions a {font-size:14px;font-weight:600;color:#245b3f;}
 .resume-close {font:600 14px/1.4 sans-serif;background:#173d2d;color:#fff;border:0;border-radius:6px;padding:10px 16px;cursor:pointer;margin:0;height:auto;}
@@ -937,7 +939,7 @@
         </a>
         <script>(function(){var b=document.querySelector('.whatsapp-chat');if(!b)return;function u(){b.classList.toggle('is-waiting',window.innerWidth<=500&&window.scrollY<window.innerHeight*1.1);}window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);document.addEventListener('DOMContentLoaded',u);u();}());</script>
     <dialog id="resume-dialog" class="resume-dialog" aria-labelledby="resume-dialog-title">
-<div class="resume-dialog-header"><h2 id="resume-dialog-title">My Resume</h2>
+<div class="resume-dialog-header"><h2 id="resume-dialog-title" tabindex="-1" autofocus>My Resume</h2>
 <div class="resume-switch" role="group" aria-label="Choose CV version">
 <button type="button" class="resume-switch-btn" data-cv="mobile" aria-pressed="true">Mobile &amp; Cross-Platform</button>
 <button type="button" class="resume-switch-btn" data-cv="android" aria-pressed="false">Android</button>
