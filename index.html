@@ -253,13 +253,18 @@
 .resume-dialog-header {display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 22px;border-bottom:1px solid #c5d5ca;flex-shrink:0;}
 .resume-dialog-header h2 {font-size:26px;margin:0;}
 .resume-dialog-actions {display:flex;align-items:center;gap:18px;}
+.resume-switch {display:inline-flex;gap:4px;padding:4px;border:1px solid #c5d5ca;border-radius:999px;background:#fff;margin-right:auto;margin-left:12px;}
+.resume-switch-btn {font:600 14px/1.2 sans-serif;color:#245b3f;background:transparent;border:0;border-radius:999px;padding:9px 16px;margin:0;height:auto;cursor:pointer;letter-spacing:0;text-transform:none;}
+.resume-switch-btn:hover {background:#e6efe8;}
+.resume-switch-btn[aria-pressed="true"] {background:#173d2d;color:#fff;}
+.resume-switch-btn:focus-visible {outline:3px solid #3b9467;outline-offset:2px;}
 .resume-dialog-actions a {font-size:14px;font-weight:600;color:#245b3f;}
 .resume-close {font:600 14px/1.4 sans-serif;background:#173d2d;color:#fff;border:0;border-radius:6px;padding:10px 16px;cursor:pointer;margin:0;height:auto;}
 .resume-close:focus-visible,.resume-dialog a:focus-visible {outline:3px solid #3b9467;outline-offset:3px;}
 .resume-dialog iframe {display:block;width:100%;flex:1;min-height:0;border:0;background:#fff;}
 .resume-dialog-fallback {font-size:13px;line-height:1.5;padding:10px 22px;margin:0;flex-shrink:0;}
 .resume-dialog-fallback a {color:#245b3f;text-decoration:underline;}
-@media(max-width:600px){.resume-dialog{width:96vw;max-width:96vw;height:92vh;max-height:92vh;}.resume-dialog-header{padding:12px;align-items:flex-start;}.resume-dialog-header h2{font-size:21px;}.resume-dialog-actions{gap:10px;}.resume-dialog-actions a{font-size:12px;}.resume-close{padding:8px 10px;}.resume-dialog-fallback{padding:8px 12px;}}
+@media(max-width:600px){.resume-dialog{width:96vw;max-width:96vw;height:92vh;max-height:92vh;}.resume-dialog-header{padding:12px;align-items:flex-start;}.resume-dialog-header h2{font-size:21px;}.resume-dialog-actions{gap:10px;}.resume-dialog-actions a{font-size:12px;}.resume-dialog-header{flex-wrap:wrap;}.resume-switch{order:3;width:100%;margin:4px 0 0;justify-content:stretch;}.resume-switch-btn{flex:1;padding:8px 6px;font-size:13px;}.resume-close{padding:8px 10px;}.resume-dialog-fallback{padding:8px 12px;}}
 
 /* Keep section titles clear of decorative numbering. */
 .section-header::before { content: none; display: none; }
@@ -933,20 +938,53 @@
         <script>(function(){var b=document.querySelector('.whatsapp-chat');if(!b)return;function u(){b.classList.toggle('is-waiting',window.innerWidth<=500&&window.scrollY<window.innerHeight*1.1);}window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);document.addEventListener('DOMContentLoaded',u);u();}());</script>
     <dialog id="resume-dialog" class="resume-dialog" aria-labelledby="resume-dialog-title">
 <div class="resume-dialog-header"><h2 id="resume-dialog-title">My Resume</h2>
-<div class="resume-dialog-actions"><a href="assets/Omer_Habib_Resume.pdf" download>Download Resume &#8595;</a><button type="button" class="resume-close" aria-label="Close resume preview">Close &#215;</button></div></div>
+<div class="resume-switch" role="group" aria-label="Choose CV version">
+<button type="button" class="resume-switch-btn" data-cv="mobile" aria-pressed="true">Mobile &amp; Cross-Platform</button>
+<button type="button" class="resume-switch-btn" data-cv="android" aria-pressed="false">Android</button>
+</div>
+<div class="resume-dialog-actions"><a class="resume-download" href="assets/Omer_Habib_Resume.pdf" download="Moin_Omer_Habib_CV_Mobile.pdf">Download CV &#8595;</a><button type="button" class="resume-close" aria-label="Close resume preview">Close &#215;</button></div></div>
 <iframe data-src="assets/Omer_Habib_Resume.pdf#view=FitH" title="Moin Omer Habib — resume PDF"></iframe>
-<p class="resume-dialog-fallback">PDF not displaying? <a href="assets/Omer_Habib_Resume.pdf" target="_blank" rel="noopener noreferrer">Open it in a new tab &#8599;</a></p>
+<p class="resume-dialog-fallback">PDF not displaying? <a class="resume-open-tab" href="assets/Omer_Habib_Resume.pdf" target="_blank" rel="noopener noreferrer">Open it in a new tab &#8599;</a></p>
 </dialog>
 <script>
 (function () {
 'use strict';
 var dialog = document.getElementById('resume-dialog');
 var frame = dialog.querySelector('iframe');
+var download = dialog.querySelector('.resume-download');
+var openTab = dialog.querySelector('.resume-open-tab');
+var switchButtons = dialog.querySelectorAll('.resume-switch-btn');
+var cvs = {
+  mobile: {file: 'assets/Omer_Habib_Resume.pdf', name: 'Moin_Omer_Habib_CV_Mobile.pdf', title: 'Moin Omer Habib — Mobile & Cross-Platform CV'},
+  android: {file: 'assets/Moin_Omer_Habib_CV_Android.pdf', name: 'Moin_Omer_Habib_CV_Android.pdf', title: 'Moin Omer Habib — Android CV'}
+};
+var currentCv = 'mobile';
+function selectCv(key, load) {
+  var cv = cvs[key] || cvs.mobile;
+  currentCv = cvs[key] ? key : 'mobile';
+  switchButtons.forEach(function (btn) { btn.setAttribute('aria-pressed', String(btn.getAttribute('data-cv') === currentCv)); });
+  download.setAttribute('href', cv.file);
+  download.setAttribute('download', cv.name);
+  openTab.setAttribute('href', cv.file);
+  frame.setAttribute('title', cv.title);
+  frame.setAttribute('data-src', cv.file + '#view=FitH');
+  if (load) frame.setAttribute('src', cv.file + '#view=FitH');
+}
+switchButtons.forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var key = btn.getAttribute('data-cv');
+    if (key === currentCv) return;
+    selectCv(key, true);
+    if (typeof window.gtag === 'function') window.gtag('event', 'cv_version_select', {cv_version: key});
+  });
+});
 var previousOverflow;
 document.querySelectorAll('[data-resume-preview]').forEach(function (trigger) {
 trigger.addEventListener('click', function (event) {
 if (typeof dialog.showModal !== 'function') return;
 event.preventDefault();
+var wanted = trigger.getAttribute('data-resume-preview');
+if (wanted && cvs[wanted] && wanted !== currentCv) selectCv(wanted, true);
 if (!frame.getAttribute('src')) frame.setAttribute('src', frame.getAttribute('data-src'));
 previousOverflow = document.body.style.overflow;
 dialog.showModal();
